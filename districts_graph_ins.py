@@ -1,6 +1,9 @@
 from weighted_graph_ds import WeightedGraph
 
 class Districts:
+    source = ""
+    target = ""
+
     def __init__(self):
         # Instance of WeightedGraph
         self.weighted_graph = WeightedGraph()
@@ -31,6 +34,10 @@ class Districts:
         self.weighted_graph.add_edge('Dedza', 'Ntcheu', 74)
 
     def shortest_path_between(self, source, target):
+        #storing the target and source for printing out later
+        self.source = source
+        self.target = target
+
         shortest_path = self.weighted_graph.find_shortest_path(source, target)
 
         if shortest_path:
@@ -48,9 +55,12 @@ if __name__ == '__main__':
     districts_instance.use_weighted_graph()
 
     # Finding the shortest path
-    shortest_path = districts_instance.shortest_path_between('Dedza', 'Nkhotakota')
+    # Use the method below to test the code
+    shortest_path = districts_instance.shortest_path_between('Mchinji', 'Nkhotakota')
 
     if shortest_path:
-        print("Shortest path from Dedza to Nkhotakota:", shortest_path)
+        #splitting the array
+        path_parts = shortest_path.split(', ')
+        print("Shortest path from " + districts_instance.source + " to " + districts_instance.target +":", shortest_path)
     else:
-        print("No path from Dedza to Nkhotakota.")
+        print("No path from " + districts_instance.source + " to " + districts_instance.target +".")
