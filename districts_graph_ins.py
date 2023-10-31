@@ -42,23 +42,6 @@ class Districts:
 
         return "No path found."
 
-    # Calculating the shortest path
-    # def calculate_shortest_path(self, source, target):
-    #     shortest_path = self.weighted_graph.find_shortest_path(source, target)
-    #     if shortest_path:
-    #         shortest_distance = sum(
-    #             self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
-    #             for i in range(len(shortest_path) - 1)
-    #         )
-    #         return shortest_path, shortest_distance
-    #     else:
-    #         return [], float('inf')
-    
-    # # districts print out   
-    # def nodes_in_shortest_path(self, source, target):
-    #     shortest_path, _ = self.calculate_shortest_path(source, target)
-    #     return shortest_path
-        
 # Running the code
 if __name__ == '__main__':
     districts_instance = Districts()
