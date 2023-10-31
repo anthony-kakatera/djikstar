@@ -39,4 +39,8 @@ If you don't have Python's package manager (PIP) installed, you can follow these
 
 
 ## Screenshots
+
+### 1. Test case one
+
+Source node is Dedza and target node is Nkhotakota 
 ![Alt text](https://github.com/anthony-kakatera/djikstar/blob/master/screenshots/DJIKSTAR%20SCREENSHOT%201.png "Optional title")
