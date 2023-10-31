@@ -42,5 +42,16 @@ class Districts:
             return shortest_distance
         else:
             return float('inf') 
+        
+# Running the code
+if __name__ == '__main__':
+    districts_instance = Districts()
+    districts_instance.use_weighted_graph()
 
-
+    #finding the shortest path
+    distance = districts_instance.calculate_shortest_path('Dedza', 'Nkhotakota')
+    # verifying
+    if distance != float('inf'):
+        print("Shortest distance from Dedza to Nkhotakota: ", distance)
+    else:
+        print("No path from Dedza to Nkhotakota.")
