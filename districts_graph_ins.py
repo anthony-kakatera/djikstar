@@ -39,9 +39,14 @@ class Districts:
                 self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
                 for i in range(len(shortest_path) - 1)
             )
-            return shortest_distance
+            return shortest_path, shortest_distance
         else:
-            return float('inf') 
+            return [], float('inf')
+    
+    # districts print out   
+    def nodes_in_shortest_path(self, source, target):
+        shortest_path, _ = self.calculate_shortest_path(source, target)
+        return shortest_path
         
 # Running the code
 if __name__ == '__main__':
@@ -49,9 +54,11 @@ if __name__ == '__main__':
     districts_instance.use_weighted_graph()
 
     #finding the shortest path
-    distance = districts_instance.calculate_shortest_path('Dedza', 'Nkhotakota')
+    distance = districts_instance.calculate_shortest_path('Dedza', 'Nkhotakota');
+
     # verifying
     if distance != float('inf'):
         print("Shortest distance from Dedza to Nkhotakota: ", distance)
+        #print("Districts passed: ", districtsPassed)
     else:
         print("No path from Dedza to Nkhotakota.")
