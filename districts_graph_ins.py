@@ -29,3 +29,18 @@ class Districts:
         self.weighted_graph.add_edge('Nkhotakota', 'Salima', 112)
         self.weighted_graph.add_edge('Salima', 'Dedza', 96)
         self.weighted_graph.add_edge('Dedza', 'Ntcheu', 74)
+
+
+    # Calculating the shortest path
+    def calculate_shortest_path(self, source, target):
+        shortest_path = self.weighted_graph.find_shortest_path(source, target)
+        if shortest_path:
+            shortest_distance = sum(
+                self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
+                for i in range(len(shortest_path) - 1)
+            )
+            return shortest_distance
+        else:
+            return float('inf') 
+
+
