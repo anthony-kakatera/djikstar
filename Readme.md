@@ -17,8 +17,10 @@ If you don't have Python's package manager (PIP) installed, you can follow these
   python get-pip.py
 
 
-#### Windows
+#### macOS and Linux
 - Most Unix-based systems come with PIP pre-installed. You can check if PIP is available by running:
+
+  pip --version
 
 ### 2. Run the Script
 - Now that you have PIP installed, you can run the project script as follows:
