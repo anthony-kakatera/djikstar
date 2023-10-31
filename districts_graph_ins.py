@@ -30,35 +30,44 @@ class Districts:
         self.weighted_graph.add_edge('Salima', 'Dedza', 96)
         self.weighted_graph.add_edge('Dedza', 'Ntcheu', 74)
 
+    def shortest_path_between(self, source, target):
+        shortest_path = self.weighted_graph.find_shortest_path(source, target)
+
+        if shortest_path:
+            path_cost = 0
+            for i in range(len(shortest_path) - 1):
+                path_cost += self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
+            shortest_path_str = f"{shortest_path}, {path_cost}"
+            return shortest_path_str
+
+        return "No path found."
 
     # Calculating the shortest path
-    def calculate_shortest_path(self, source, target):
-        shortest_path = self.weighted_graph.find_shortest_path(source, target)
-        if shortest_path:
-            shortest_distance = sum(
-                self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
-                for i in range(len(shortest_path) - 1)
-            )
-            return shortest_path, shortest_distance
-        else:
-            return [], float('inf')
+    # def calculate_shortest_path(self, source, target):
+    #     shortest_path = self.weighted_graph.find_shortest_path(source, target)
+    #     if shortest_path:
+    #         shortest_distance = sum(
+    #             self.weighted_graph.get_edge_weight(shortest_path[i], shortest_path[i + 1])
+    #             for i in range(len(shortest_path) - 1)
+    #         )
+    #         return shortest_path, shortest_distance
+    #     else:
+    #         return [], float('inf')
     
-    # districts print out   
-    def nodes_in_shortest_path(self, source, target):
-        shortest_path, _ = self.calculate_shortest_path(source, target)
-        return shortest_path
+    # # districts print out   
+    # def nodes_in_shortest_path(self, source, target):
+    #     shortest_path, _ = self.calculate_shortest_path(source, target)
+    #     return shortest_path
         
 # Running the code
 if __name__ == '__main__':
     districts_instance = Districts()
     districts_instance.use_weighted_graph()
 
-    #finding the shortest path
-    distance = districts_instance.calculate_shortest_path('Dedza', 'Nkhotakota');
+    # Finding the shortest path
+    shortest_path = districts_instance.shortest_path_between('Dedza', 'Nkhotakota')
 
-    # verifying
-    if distance != float('inf'):
-        print("Shortest distance from Dedza to Nkhotakota: ", distance)
-        #print("Districts passed: ", districtsPassed)
+    if shortest_path:
+        print("Shortest path from Dedza to Nkhotakota:", shortest_path)
     else:
         print("No path from Dedza to Nkhotakota.")
