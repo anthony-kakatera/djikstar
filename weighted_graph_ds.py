@@ -50,3 +50,31 @@ class WeightedGraph:
             target = best_neighbor
 
         return path
+    
+    def delete_node(self, node):
+        if node in self.graph:
+            del self.graph[node]
+            for n in self.graph:
+                if node in self.graph[n]:
+                    del self.graph[n][node]
+
+    def delete_edge(self, node1, node2):
+        if node1 in self.graph and node2 in self.graph:
+            if node2 in self.graph[node1]:
+                del self.graph[node1][node2]
+            if node1 in self.graph[node2]:
+                del self.graph[node2][node1]
+
+    def update_node(self, old_node, new_node):
+        if old_node in self.graph:
+            self.graph[new_node] = self.graph[old_node]
+            del self.graph[old_node]
+            for node in self.graph:
+                if old_node in self.graph[node]:
+                    self.graph[node][new_node] = self.graph[node][old_node]
+                    del self.graph[node][old_node]
+
+    def update_edge(self, node1, node2, new_weight):
+        if node1 in self.graph and node2 in self.graph:
+            self.graph[node1][node2] = new_weight
+            self.graph[node2][node1] = new_weight
