@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     # Finding the shortest path
     # Use the method below to test the code
-    shortest_path = districts_instance.shortest_path_between('Mchinji', 'Nkhotakota')
+    shortest_path = districts_instance.shortest_path_between('Dedza', 'Nkhotakota')
 
     if shortest_path:
         #splitting the array
